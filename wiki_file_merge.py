@@ -9,9 +9,6 @@ from datetime import datetime
 WIKI_FILE_LIST = 'extract/*/*'
 WIKI_TEXT = 'output/wiki_text.txt'
 WIKI_TEXT_COLUMN = ('title', 'text', 'words', 'basic_words')
-#python WikiExtractor.py jawiki-latest-pages-articles\(1\).xml.bz2  -o extract
-
-
 
 m = MeCab.Tagger('-d /usr/local/lib/mecab/dic/mecab-ipadic-neologd')
 def text_to_words(text):
@@ -97,24 +94,3 @@ if __name__ == '__main__':
     df = pd.DataFrame(wiki_list)
     df.to_csv(WIKI_TEXT, sep='\t', index=False, header=WIKI_TEXT_COLUMN)
     print('Finished !!')
-
-'''
-彼はとてもかっこいい顔をしているが、 不謹慎な発言が多い。
-彼	名詞,代名詞,一般,*,*,*,彼,カレ,カレ
-は	助詞,係助詞,*,*,*,*,は,ハ,ワ
-とても	副詞,助詞類接続,*,*,*,*,とても,トテモ,トテモ
-かっこいい	形容詞,自立,*,*,不変化型,基本形,かっこいい,カッコイイ,カッコイイ
-顔	名詞,一般,*,*,*,*,顔,カオ,カオ
-を	助詞,格助詞,一般,*,*,*,を,ヲ,ヲ
-し	動詞,自立,*,*,サ変・スル,連用形,する,シ,シ
-て	助詞,接続助詞,*,*,*,*,て,テ,テ
-いる	動詞,非自立,*,*,一段,基本形,いる,イル,イル
-不謹慎	名詞,形容動詞語幹,*,*,*,*,不謹慎,フキンシン,フキンシン
-な	助動詞,*,*,*,特殊・ダ,体言接続,だ,ナ,ナ
-発言	名詞,サ変接続,*,*,*,*,発言,ハツゲン,ハツゲン
-が	助詞,格助詞,一般,*,*,*,が,ガ,ガ
-多い	形容詞,自立,*,*,形容詞・アウオ段,基本形,多い,オオイ,オーイ
-。	記号,句点,*,*,*,*,。,。,。
-EOS
-
-'''
